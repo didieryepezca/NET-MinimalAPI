@@ -38,13 +38,7 @@ app.MapGet("/api/personasbyid", async (AppDbContext db, int id) =>
 {
     var persons = await db.Personas.FindAsync(id);
 
-    if (persons?.ID != 0)
-    {
-        return Results.Ok(persons);       
-    }
-    else {
-        return Results.NotFound();
-    }    
+    return persons != null? Results.Ok(persons) : Results.NotFound();     
 });
 
 app.MapPost("/api/addpersonas", (AppDbContext db, Personas person) =>
