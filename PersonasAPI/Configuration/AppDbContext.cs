@@ -15,7 +15,7 @@ namespace PersonasAPI.Configuration
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
+        {           
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
