@@ -60,6 +60,13 @@ app.UseAuthorization();
 
 app.UseHttpsRedirection();
 
+app.MapPost("/generarsesion", (IJwtService jwtService) =>
+{
+    var jwtToken = jwtService.GenerateToken();
+
+    return jwtToken != String.Empty ? Results.Ok(jwtToken) : Results.NoContent();
+});
+
 
 app.MapGet("/api/personasrepo", [Authorize] async (IPersonaRepository personaRepository) =>
 {
